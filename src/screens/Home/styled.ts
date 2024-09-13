@@ -15,6 +15,14 @@ export const Text = styled.Text`
     font-style: helveltica;
 `;
 
+export const TextButtom = styled.Text`
+    color: black;
+    padding: 4px;
+    font-size: 12px;
+    font-style: italic;
+
+`
+
 export const Input = styled.TextInput`
 
     padding: 6px;
@@ -27,9 +35,14 @@ export const Input = styled.TextInput`
 
 `;
 
-export const Buttom = styled.Button`
+export const Buttom = styled.TouchableOpacity`
+    
+    margin-top: 15px;
     padding: 6px;
-    width: 50%;
+    width: 100px;
     background-color: yellow;
     border-radius: 25px;
+    align-items: center;
+    justify-content: center;
+
 `;
