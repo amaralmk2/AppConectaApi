@@ -32,7 +32,7 @@ export const Input = styled.TextInput`
     color: black;
     border: none;
     border-radius: 6px;
-    background-color: #bf4f74;
+    background-color: ${({theme}) => theme.COLORS.PRIMARY_700};
 
 `;
 
@@ -41,7 +41,7 @@ export const Buttom = styled.TouchableOpacity`
     margin-top: 15px;
     padding: 6px;
     width: 100px;
-    background-color: yellow;
+    background-color: ${({theme}) => theme.COLORS.PRIMARY_800};
     border-radius: 25px;
     align-items: center;
     justify-content: center;

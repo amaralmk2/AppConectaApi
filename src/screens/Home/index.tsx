@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { Container, Text, Input, Buttom, TextButtom} from "./styled";
-import { View, Alert } from "react-native";
+import { View, Alert, StyleSheet } from "react-native";
 import axios from "axios";
+import styled from "styled-components";
 
 export function Home(){
 
@@ -29,7 +30,8 @@ export function Home(){
 
     return(
         <Container>
-            <View>
+            <View style={styles.box}>
+            <View style={styles.container}>
                 <Text>Digite seu nome</Text>
             <Input keyboardType="default" placeholder="Digite seu E-mail"></Input>
                 <Text>Digite seu email</Text>
@@ -38,7 +40,28 @@ export function Home(){
             <Input keyboardType="numeric" placeholder="Digite sua idade"></Input>
             <Buttom onPress={handleSubmit}><TextButtom>Enviar dados</TextButtom></Buttom>
             </View>
+            </View>
         </Container>
     );
 
+    
 };
+
+const styles = StyleSheet.create({
+    container : {
+
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+        
+
+    },
+
+    box: {
+        width: 300,               // Largura aproximada de um celular
+        height: 500,              // Altura aproximada de um celular
+        borderWidth: 0.5,           // Espessura da borda
+        borderColor: 'black',     // Cor da borda
+        borderRadius: 40,         // Cantos arredondados que imitam um celular
+    }
+})
