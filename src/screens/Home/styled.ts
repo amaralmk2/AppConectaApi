@@ -1,15 +1,16 @@
 import styled from "styled-components/native";
+import light from "../../Theme/light";
 
 export const Container = styled.View`
     flex: 1;
     align-items: center;
     justify-content: center;
-    background-color: black;
+    background-color: ${({theme}) => theme.COLORS.BACKGROUND};
     
 `;
 
 export const Text = styled.Text`
-    color: yellow;
+    color: ${({theme}) => theme.COLORS.PRIMARY_800};
     padding: 4px;
     font-size: 19px;
     font-style: helveltica;
