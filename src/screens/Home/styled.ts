@@ -17,7 +17,7 @@ export const Text = styled.Text`
 `;
 
 export const TextButtom = styled.Text`
-    color: black;
+    color: ${({theme}) => theme.COLORS.BACKGROUND};
     padding: 4px;
     font-size: 12px;
     font-style: italic;

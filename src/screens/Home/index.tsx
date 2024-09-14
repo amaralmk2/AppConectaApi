@@ -10,7 +10,7 @@ export function Home(){
     const [name, setName] = useState('');
     const [age, setAge] = useState('');
 
-    const handleSubmit = () => {
+    const handleSubmit = async () => {
         if(!name || !email || !age){
             Alert.alert('Error', "Preencha todos os campos!");
             return;
@@ -26,18 +26,61 @@ export function Home(){
 
         }
 
+        try{    
+            const response = await axios.post('http://10.0.2.2:3000/usuarios', {
+                name,
+                email,
+                age,
+            });
+
+            if(response.status = 201) {
+                Alert.alert('Success', 'Usuario criado com sucesso!');
+                setName('');
+                setEmail('');
+                setAge('');
+            }
+        
+
+        }catch(error){
+        
+            const errorMessage = (error as Error).message || 'Um erro inesperado ocorreu!';
+            Alert.alert('Error', errorMessage);
+            console.error('Error', errorMessage);
+
+                
+        }
+
     }
 
     return(
         <Container>
             <View style={styles.box}>
             <View style={styles.container}>
-                <Text>Digite seu nome</Text>
-            <Input keyboardType="default" placeholder="Digite seu E-mail"></Input>
+                    <Text>Digite seu nome</Text>
+                    
+                    <Input 
+                     value={name}
+                     onChangeText={setName}
+                     keyboardType="default" 
+                     placeholder="Digite seu E-mail"
+
+            />
                 <Text>Digite seu email</Text>
-            <Input keyboardType="email-address" placeholder="Digite seu nome"></Input>
+                
+                <Input
+                value={email}
+                onChangeText={setEmail}
+                keyboardType="email-address"
+                placeholder="Digite seu nome"
+            />
                 <Text>Digite sua idade</Text>
-            <Input keyboardType="numeric" placeholder="Digite sua idade"></Input>
+                
+                <Input
+                value={age}
+                onChangeText={setAge}
+                keyboardType="numeric"
+                placeholder="Digite sua idade"
+                />
             <Buttom onPress={handleSubmit}><TextButtom>Enviar dados</TextButtom></Buttom>
             </View>
             </View>
@@ -53,15 +96,14 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
-        
 
     },
 
     box: {
-        width: 300,               // Largura aproximada de um celular
-        height: 500,              // Altura aproximada de um celular
-        borderWidth: 0.5,           // Espessura da borda
-        borderColor: 'black',     // Cor da borda
-        borderRadius: 40,         // Cantos arredondados que imitam um celular
+        width: 300,               
+        height: 500,              
+        borderWidth: 0.5,         
+        borderColor: 'black',     
+        borderRadius: 40,         
     }
 })
